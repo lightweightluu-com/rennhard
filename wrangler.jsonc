@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rennhard",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./dist", "not_found_handling": "single-page-application" },
+  "observability": { "enabled": true },
+  // Custom Domain: die Zone lightweightluu.com muss im selben Cloudflare-Account liegen.
+  "routes": [{ "pattern": "rennhard.lightweightluu.com", "custom_domain": true }]
+}

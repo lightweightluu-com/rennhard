@@ -18,6 +18,10 @@ Ohne `.env` läuft die Seite mit den übernommenen Inhalten aus `src/content/see
 4. `firebase deploy --only firestore:rules,storage` und `npm run build && firebase deploy --only hosting`.
 5. Unter `/admin` anmelden → *Seitentexte* → **Inhalte in Datenbank übernehmen** (einmalige Migration).
 
+## Deployment (Cloudflare Workers)
+Push auf `main` baut und deployt über `.github/workflows/deploy.yml` (`wrangler.jsonc`, Custom Domain `rennhard.lightweightluu.com`).
+Nötig: Repository-Secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`; die Firebase-Werte optional als Repository-Variablen `VITE_FIREBASE_*`.
+
 ## Aufbau
 ```
 src/features/site     öffentliche Seiten (Layout, Sections, pages)
