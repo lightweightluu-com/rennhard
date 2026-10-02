@@ -1,5 +1,7 @@
 import type { SiteContent } from "../lib/types";
 
+const img = (name: string) => `${import.meta.env.BASE_URL}img/${name}`;
+
 const weekday = (day: string) => ({
   day,
   closed: false,
@@ -42,7 +44,7 @@ export const seed: SiteContent = {
       headline: "Dein Partner für alle Automarken in der Region.",
       lead: "Wir erledigen für dein Auto anstehende Wartungsarbeiten sowie sämtliche Reparaturarbeiten, und das zu günstigen Preisen!",
       body: "Bei uns ist dein Auto in guten Händen.",
-      image: "/img/garage.jpg",
+      image: img("garage.jpg"),
     },
     offer: {
       headline: "Unser Angebot",
@@ -54,7 +56,7 @@ export const seed: SiteContent = {
       headline: "Wir – die Dorfgarage Rennhard GmbH",
       intro:
         "Wir bieten unseren Kunden besten Service zu immer fairen Preisen. Dank qualifizierten Mitarbeitern und der neusten Technik können wir jederzeit schnellsten Ersatzteilservice und professionelle Dienstleistungen wie Wartung und Reparaturen Deines Fahrzeugs garantieren.",
-      image: "/img/garage.jpg",
+      image: img("garage.jpg"),
     },
     vehicles: {
       headline: "Occasionen",
@@ -80,9 +82,9 @@ export const seed: SiteContent = {
     "Tuning und Zubehör",
   ].map((title, i) => ({ id: `s${i + 1}`, title, description: "", order: i + 1, visible: true })),
   team: [
-    { id: "t1", name: "Marco Rennhard", role: "Inhaber, Automobilfachmann EFZ", photo: "/img/team1.jpg", order: 1, visible: true },
-    { id: "t2", name: "Tiffany Rennhard", role: "Administration und Kundenbetreuung", photo: "/img/team2.jpg", order: 2, visible: true },
-    { id: "t3", name: "Mia", role: "Sicherheitsbeauftragte", photo: "/img/team3.jpg", order: 3, visible: true },
+    { id: "t1", name: "Marco Rennhard", role: "Inhaber, Automobilfachmann EFZ", photo: img("team1.jpg"), order: 1, visible: true },
+    { id: "t2", name: "Tiffany Rennhard", role: "Administration und Kundenbetreuung", photo: img("team2.jpg"), order: 2, visible: true },
+    { id: "t3", name: "Mia", role: "Sicherheitsbeauftragte", photo: img("team3.jpg"), order: 3, visible: true },
   ],
   vehicles: [],
   legal: {
