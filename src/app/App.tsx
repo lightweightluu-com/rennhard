@@ -1,0 +1,27 @@
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { Layout } from "../features/site/Layout";
+import { About, Contact, Home, Legal, NotFound, Offer, Vehicles } from "../features/site/pages";
+
+const AdminApp = lazy(() => import("../features/admin/AdminApp"));
+
+export function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="angebot" element={<Offer />} />
+          <Route path="occasionen" element={<Vehicles />} />
+          <Route path="ueber-uns" element={<About />} />
+          <Route path="kontakt" element={<Contact />} />
+          <Route path="impressum" element={<Legal doc="imprint" />} />
+          <Route path="datenschutz" element={<Legal doc="privacy" />} />
+          <Route path="cookies" element={<Legal doc="cookies" />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="admin/*" element={<Suspense fallback={null}><AdminApp /></Suspense>} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
