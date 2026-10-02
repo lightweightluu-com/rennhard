@@ -1,16 +1,16 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router";
+import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router";
 import { Layout } from "../features/site/Layout";
 import { About, Contact, Home, Legal, NotFound, Offer, Vehicles } from "../features/site/pages";
 
 const AdminApp = lazy(() => import("../features/admin/AdminApp"));
 
-/** Hash-Routing nur für statische Vorschau-Hosts ohne SPA-Fallback (VITE_HASH_ROUTER=1). */
-const Router = import.meta.env.VITE_HASH_ROUTER ? HashRouter : BrowserRouter;
+/** Memory-Routing nur für eingebettete Vorschau-Hosts ohne eigene URL (VITE_MEMORY_ROUTER=1). */
+const Router = import.meta.env.VITE_MEMORY_ROUTER ? MemoryRouter : BrowserRouter;
 
 export function App() {
   return (
-    <Router {...(import.meta.env.VITE_HASH_ROUTER ? {} : { basename: import.meta.env.BASE_URL })}>
+    <Router {...(import.meta.env.VITE_MEMORY_ROUTER ? {} : { basename: import.meta.env.BASE_URL })}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
